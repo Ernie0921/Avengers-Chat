@@ -3,8 +3,8 @@ import { auth } from "../config";
 
 
 const MessageCard = ({ message, handleDelete}) => {
-    const { displayName } = auth.currentUser;
-    const {id, text, uid, createdAt, photoURL } = message;
+    
+    const {id, text, uid, userName,  createdAt, photoURL } = message;
     const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
     const [showActionButtons, setShowActionButton] = useState(false);
     const toggleCard = () => {
@@ -17,7 +17,7 @@ const MessageCard = ({ message, handleDelete}) => {
             <div className={`message ${messageClass}`}>
                 <div className="contents" onClick={toggleCard}>
                     <div className="user-name">
-                        <p>{displayName}</p>
+                        <p>{userName}</p>
                     </div>
                     <div className="photo">
                         <img
@@ -28,14 +28,19 @@ const MessageCard = ({ message, handleDelete}) => {
                     <div className="text">
                         <p>{text}</p>
                     </div>
-                    {/*
+                
                         <div
-                        style={{ display: showActionButton ? "block" : "none" }}
+                        style={{ 
+                            display: 
+                                showActionButtons && uid === auth.currentUser.uid 
+                                ? "block" 
+                                : "none" 
+                            }}
                         className="action"
                     >
                         <button onClick={() => handleDelete(createdAt, id)}>Delete</button> 
                     </div>
-                */}
+            
                 </div>
             </div>
         </>

@@ -9,12 +9,14 @@ const NavBar = ({ user, currentRoom, setCurrentRoom }) => {
     <nav>
       <h1>
         {user ? (
-          <>
-            Current room: <strong>{currentRoom}</strong>
-          </>
-        ) : (
-          <strong>Chat App</strong>
-        )}
+            <>
+            Chat room: <strong>{currentRoom}</strong>
+            </>
+            ) : (
+                <img src="https://www.pinclipart.com/picdir/middle/565-5655297_marvel-comics-logo-vector-clipart.png" alt="marvel logo" />
+                
+                )
+        }
       </h1>
       {user ? (
         <>
